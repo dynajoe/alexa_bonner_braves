@@ -29,7 +29,7 @@ const handlers = {
       this.emit(':tell', `I don't know! <break time="1s"/> I'm too afraid to look her in the eye!`)
    },
    'officer_davis': function () {
-      this.emit(':tell', 'A gigantic huge humungous wonderful man!')
+      this.emit(':tell', 'A gigantic huge humungous wonderful man! <break time="1s" /> Yeah, he scares me too! Alexa is no match for Officer Davis.')
    },
    'Unhandled': function () {
       this.emit(':tell', `Sorry! That didn't make any sense to me kiddo!`)
