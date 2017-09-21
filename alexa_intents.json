@@ -1,0 +1,66 @@
+{
+  "intents": [
+    {
+      "name": "AMAZON.CancelIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.HelpIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.StopIntent",
+      "samples": []
+    },
+    {
+      "name": "menu_date",
+      "samples": [
+        "What is for lunch {time_utterance}"
+      ],
+      "slots": [
+        {
+          "name": "time_utterance",
+          "type": "AMAZON.DATE",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "menu_today",
+      "samples": [
+        "What is for lunch",
+        "What are we going to eat for lunch",
+        "What are we eating"
+      ],
+      "slots": []
+    }
+  ],
+  "types": [
+    {
+      "name": "dateish_things",
+      "values": [
+        {
+          "id": null,
+          "name": {
+            "value": "today",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "tomorrow",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "yesterday",
+            "synonyms": []
+          }
+        }
+      ]
+    }
+  ]
+}
