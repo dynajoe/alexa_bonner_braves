@@ -8,10 +8,11 @@ const Jokes = require('./jokes.json')
 
 const handlers = {
    'menu_date': function () {
+      const today = Moment.tz('America/Chicago').format('YYYY-MM-DD')
       const random_joke = Jokes[_.random(0, Jokes.length - 1)]
-      const date = this.event.request.intent.slots.time_utterance.value
+      const date = _.get(this.event, 'request.intent.slots.time_utterance.value', today)
       const lunch = _.get(LunchMenu, `${date}.menu`)
-      const is_today = Moment.tz('America/Chicago').format('YYYY-MM-DD') === date
+      const is_today = today === date
       const day_of_week = Moment.tz(date, 'America/Chicago').format('dddd')
 
       if (!_.isNil(lunch)) {
@@ -30,16 +31,14 @@ const handlers = {
    'officer_davis': function () {
       this.emit(':tell', 'A gigantic huge humungous wonderful man!')
    },
-   'AMAZON.HelpIntent': function () {
-      const speechOutput = this.t('HELP_MESSAGE')
-      const reprompt = this.t('HELP_MESSAGE')
-      this.emit(':ask', speechOutput, reprompt)
+   'Unhandled': function () {
+      this.emit(':tell', `Sorry! That didn't make any sense to me kiddo!`)
    },
    'AMAZON.CancelIntent': function () {
-      this.emit(':tell', this.t('STOP_MESSAGE'))
+      this.emit(':tell', 'cancel')
    },
    'AMAZON.StopIntent': function () {
-      this.emit(':tell', this.t('STOP_MESSAGE'))
+      this.emit(':tell', 'stop')
    },
 }
 
