@@ -4,7 +4,7 @@ const Alexa = require('alexa-sdk');
 
 const handlers = {
    'menu_today': function () {
-      this.emit(':tell', 'hey joe');
+      this.emit(':tell', 'hey isaac');
    },
    'menu_date': function () {
 

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -f build.zip && zip -r build.zip . -x '.git' -x 'build.zip'",
+    "deploy": "aws lambda update-function-code --function-name bonner_braves --zip-file fileb://./build.zip"
   },
   "author": "",
   "license": "ISC",
