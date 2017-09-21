@@ -8,11 +8,13 @@ const LunchMenu = require('./lunch_menu.json')
 const handlers = {
    'menu_today': function () {
       const today = Moment.tz('America/Chicago').format('YYYY-MM-DD')
-      this.emit(':tell', 'today is chicken patty wednesday' + today)
+      const lunch = _.get(LunchMenu, `${today}.menu`, 'No school lunch today, sorry!')
+      this.emit(':tell', lunch)
    },
    'menu_date': function () {
-      console.log(this.event.request.intent.slots.time_utterance.value)
-      this.emit(':tell', 'red bottom shoes ' + this.event.request.intent.slots.time_utterance.value)
+      const date = this.event.request.intent.slots.time_utterance.value
+      const lunch = _.get(LunchMenu, `${date}.menu`, 'No school lunch that day, sorry!')
+      this.emit(':tell', lunch)
    },
    'AMAZON.HelpIntent': function () {
       const speechOutput = this.t('HELP_MESSAGE')
